@@ -9,4 +9,3 @@ def uppercase(str):
             d = c
         print(d.format(), end="")
     print("".format())
-    
