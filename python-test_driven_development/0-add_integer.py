@@ -1,17 +1,26 @@
 #!/usr/bin/python3
-"""Function that adds 2 integers.
+"""
+Fonction qui additionne 2 entiers.
 
-Returns:
-        _type_: the sum of a and b
+Retourne:
+    int: la somme de a et b
 """
 
 
 def add_integer(a, b=98):
-    """ Add 2 integers
-    Sum of a and b
     """
+    Additionne 2 entiers.
+    Calcule la somme de a et b.
+    """
+    # Vérifie si 'a' est un entier ou un flottant
     if isinstance(a, (int, float)) is False:
+        # Lève une exception si 'a' n'est pas un entier ou un flottant
         raise TypeError("a must be an integer")
+    
+    # Vérifie si 'b' est un entier ou un flottant
     if isinstance(b, (int, float)) is False:
+        # Lève une exception si 'b' n'est pas un entier ou un flottant
         raise TypeError("b must be an integer")
+    
+    # Retourne la somme de 'a' et 'b' convertie en entier
     return int(a + b)
