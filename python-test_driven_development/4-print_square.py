@@ -1,22 +1,30 @@
 #!/usr/bin/python3
-"""Print a square with the character #."""
+"""Imprime un carré avec le caractère #."""
 
 
 def print_square(size):
-    """Print a square with the character #.
+    """Imprime un carré avec le caractère #.
 
     Args:
-        size (int): The size of the square to print
+        size (int): La taille du carré à imprimer
 
     Raises:
-        TypeError: If size is not an integer
-        ValueError: If size is less than 0
+        TypeError: Si size n'est pas un entier
+        ValueError: Si size est inférieur à 0
     """
+    # Vérifie si size est un entier
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
+    
+    # Vérifie si size est négatif
     if size < 0:
         raise ValueError("size must be >= 0")
+    
+    # Cette condition semble redondante et pourrait être supprimée
     if not isinstance(size, float) and size < 0:
         raise TypeError("size must be an integer")
+    
+    # Boucle pour imprimer chaque ligne du carré
     for i in range(size):
+        # Imprime une ligne de '#' répétée 'size' fois
         print("#" * size)
