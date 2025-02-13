@@ -1,30 +1,44 @@
-# Python - Test-driven development
+# Python - Test-driven development 🧪
 
-## Table of contents
-* [Description of project](#description-of-project)
-* [Requirements](#requirements)
-* [Files](#files)
-* [Authors](#authors)
+This project focuses on test-driven development (TDD) in Python.
 
-## Description of project
-The "Python - Test-driven development" project aims to develop Python functionalities using the Test-driven development (TDD) method. This approach involves writing unit tests before implementing the functional code, ensuring that the produced code meets the requirements specified by the tests.
+## Files and Descriptions 📄
 
-## Requirements
+* `0-add_integer.py` - Function that adds 2 integers ➕
+* `2-matrix_divided.py` - Function that divides all elements of a matrix 📊
+* `3-say_my_name.py` - Function that prints "My name is first_name last_name" 📝
+* `4-print_square.py` - Function that prints a square with the character # ⬛
+* `5-text_indentation.py` - Function that prints text with 2 new lines after ., ? and : 📖
+* `6-max_integer.py` - Function to find and return the max integer in a list 🔝
 
-### Python Scripts
-* Allowed editors: vi, vim, emacs
-* All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
-* All your files should end with a new line
-* The first line of all your files should be exactly #!/usr/bin/python3
+## Test Files 🧪
 
-### Python Test Cases
-* Allowed editors: vi, vim, emacs
-* All your files should end with a new line
-* All your test files should be inside a folder tests
-* All your test files should be text files (extension: .txt)
-* All your tests should be executed by using this command: python3 -m doctest ./tests/*
+* `tests/0-add_integer.txt` - Test cases for add_integer function
+* `tests/2-matrix_divided.txt` - Test cases for matrix_divided function
+* `tests/3-say_my_name.txt` - Test cases for say_my_name function
+* `tests/4-print_square.txt` - Test cases for print_square function
+* `tests/5-text_indentation.txt` - Test cases for text_indentation function
+* `tests/6-max_integer_test.py` - Unittest for max_integer function
 
-## Files
+## Learning Objectives 🎓
 
-## Authors
-* [LOUVEAU Clément](https://github.com/valak74200)
+* What's an interactive test
+* Why tests are important
+* How to write Docstrings to create tests
+* How to write documentation for each module and function
+* What are the basic option flags to create tests
+* How to find edge cases
+* Understanding Test-Driven Development
+* Using the unittest module
+* Writing comprehensive test cases
+
+## Requirements 📋
+
+* Python 3.8+
+* All files must be executable
+* All test files should be inside `tests` folder
+* All modules should have documentation
+* All functions should have documentation
+* Documentation should be real sentences explaining purpose
+* All tests should be executed using: `python3 -m doctest ./tests/*`
+* Code follows PEP 8 style guide
