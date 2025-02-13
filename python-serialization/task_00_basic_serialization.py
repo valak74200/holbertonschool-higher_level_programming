@@ -1,10 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-Module pour la sérialisation et désérialisation de données JSON.
-
-Ce module fournit deux fonctions principales :
-- serialize_and_save_to_file : pour sérialiser des données en JSON et les sauvegarder
-- load_and_deserialize : pour charger et désérialiser des données JSON depuis un fichier
+Module for basic JSON serialization and deserialization.
 """
 
 import json
@@ -12,36 +8,35 @@ import json
 
 def serialize_and_save_to_file(data, filename):
     """
-    Sérialise un dictionnaire Python en JSON et le sauvegarde dans un fichier.
+    Serialize a Python dictionary to JSON and save it to a file.
 
     Args:
-        data (dict): Le dictionnaire Python à sérialiser
-        filename (str): Le nom du fichier de sortie JSON
+        data (dict): The Python dictionary to serialize
+        filename (str): The name of the output JSON file
 
     Returns:
         None
     """
     try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f)
+        with open(filename, 'w', encoding='utf-8') as file:
+            json.dump(data, file)
     except Exception as e:
-        print(f"Erreur lors de la sérialisation : {e}")
+        print(f"Error serializing data: {str(e)}")
 
 
 def load_and_deserialize(filename):
     """
-    Charge et désérialise des données JSON depuis un fichier.
+    Load and deserialize data from a JSON file.
 
     Args:
-        filename (str): Le nom du fichier JSON à lire
+        filename (str): The name of the input JSON file
 
     Returns:
-        dict: Le dictionnaire Python contenant les données désérialisées
-        None: En cas d'erreur
+        dict: The deserialized Python dictionary
     """
     try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        with open(filename, 'r', encoding='utf-8') as file:
+            return json.load(file)
     except Exception as e:
-        print(f"Erreur lors de la désérialisation : {e}")
+        print(f"Error deserializing data: {str(e)}")
         return None
