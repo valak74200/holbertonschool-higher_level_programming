@@ -1,35 +1,60 @@
-import http.server
-import json
+#!/usr/bin/python3
 
-class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
+import http.server
+import socketserver
+import json
+from functools import partial
+
+PORT = 8000
+
+API_DATA = {
+    "data": {"name": "John", "age": 30, "city": "New York"},
+    "info": {"version": "1.0", "description": "A simple API built with http.server"}
+}
+
+class Server(http.server.SimpleHTTPRequestHandler):
+
+    def __init__(self, *args, api_data=None, **kwargs):
+        """Initialize with external data"""
+        self.api_data = api_data or {}  # Use passed api_data or empty dictionary
+        super().__init__(*args, **kwargs)
+
+    def json_response(self, data, status = 200):
+        "From Dict to Json to web-server"
+         # encoding is neccesary because .wfile.write expect bytes object, not String object
+        json_data = json.dumps(data).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json_data)
+
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
+
         elif self.path == '/data':
-            data = {"name": "John", "age": 30, "city": "New York"}
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps(data).encode())
+            self.json_response(self.api_data.get("data", {}) )
+
+        elif self.path == '/info':
+            self.json_response(self.api_data.get("info", {}) )
+
         elif self.path == '/status':
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
-        elif self.path == '/info':
-            info = {"version": "1.0", "description": "A simple API built with http.server"}
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps(info).encode())
+        
         else:
-            self.send_error(404, "Endpoint not found")
+            self.send_response(404)
+            self.send_header("Content-type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"Endpoint not found")
 
-if __name__ == "__main__":
-    server_address = ('', 8000)
-    httpd = http.server.HTTPServer(server_address, SimpleAPIHandler)
-    print("Server running on http://localhost:8000")
+Handler = partial(Server, api_data=API_DATA)
+
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("serving at port", PORT)
     httpd.serve_forever()
