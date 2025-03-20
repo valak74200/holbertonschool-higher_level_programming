@@ -67,6 +67,13 @@ Welcome to the Python Higher Level Programming repository! This repository conta
 - Interface implementation
 - Located in: [python-abc](./python-abc)
 
+### 12. Python Server-Side Rendering 🖥️
+- Template engines and string templating
+- Flask web applications with Jinja2
+- Data processing from various sources (JSON, CSV, SQLite)
+- Dynamic web page generation
+- Located in: [python-server_side_rendering](./python-server_side_rendering)
+
 ## 🛠️ Technologies Used
 - Python 3
 - Unittest/Doctest
